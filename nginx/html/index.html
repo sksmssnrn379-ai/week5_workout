@@ -1,9 +1,423 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>나의 캡스톤 소개</title><link rel="stylesheet" href="style.css"><script defer src="app.js"></script></head>
-<body><main><header><p class="eyebrow">WEEK 5 · CAPSTONE</p><h1 id="project-title">TODO: 프로젝트 이름</h1><p>누적 조회수 <strong id="view-count">불러오는 중</strong></p></header>
-<!-- TODO: AI를 활용해 디자인과 소개 내용을 완성하세요. 아래 id는 API 연결에 사용하므로 유지하세요. -->
-<section><h2>프로젝트 소개</h2><p id="project-summary">TODO: 프로젝트 목적과 해결할 문제를 소개하세요.</p></section>
-<section><h2>주요 기능</h2><div id="project-features">TODO: 주요 기능을 구체적으로 작성하세요.</div></section>
-<section><h2>사용 기술</h2><p id="project-technology">TODO: 사용 기술과 역할을 적으세요.</p></section>
-<section><h2>팀 소개</h2><p>TODO: 팀원과 역할을 작성하세요.</p></section>
-<button id="download-button">소개 내용 다운로드 (.md)</button><button id="refresh-views">조회수 다시 확인</button><p id="message" class="result" aria-live="polite"></p>
-<footer><a href="/api/health">API 연결 확인</a><p>페이지를 열거나 새로고침하면 조회수가 증가합니다.</p></footer></main></body></html>
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Smart Shuttle · 스마트 통학 관리 시스템</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script defer src="app.js"></script>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- 헤더 -->
+        <header class="hero">
+            <div>
+                <p class="eyebrow">SMART SHUTTLE · CAPSTONE</p>
+
+                <h1 id="project-title">
+                    스마트 통학 관리 시스템
+                </h1>
+
+                <p class="hero-description">
+                    셔틀버스 운행 정보를 한눈에 확인하고
+                    안전하고 편리한 통학을 지원하는 스마트 셔틀 플랫폼
+                </p>
+            </div>
+
+            <div class="view-info">
+                <span>누적 조회수</span>
+                <strong id="view-count">불러오는 중</strong>
+            </div>
+        </header>
+
+
+        <!-- 현재 운행 상태 -->
+        <section class="dashboard-section">
+
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">LIVE STATUS</p>
+                    <h2>현재 운행 상태</h2>
+                </div>
+
+                <span class="status-badge">
+                    ● 운행 정보
+                </span>
+            </div>
+
+            <div class="status-grid">
+
+                <article class="status-card primary">
+                    <span class="card-label">현재 운행 상태</span>
+
+                    <strong id="bus-status">
+                        운행 준비
+                    </strong>
+
+                    <p id="bus-status-detail">
+                        다음 운행 정보를 확인하세요.
+                    </p>
+                </article>
+
+
+                <article class="status-card">
+                    <span class="card-label">현재 노선</span>
+
+                    <strong id="current-route">
+                        A 노선
+                    </strong>
+
+                    <p>
+                        캠퍼스 ↔ 기숙사
+                    </p>
+                </article>
+
+
+                <article class="status-card">
+                    <span class="card-label">다음 출발</span>
+
+                    <strong id="next-departure">
+                        08:30
+                    </strong>
+
+                    <p>
+                        예정 출발 시간
+                    </p>
+                </article>
+
+
+                <article class="status-card">
+                    <span class="card-label">탑승 인원</span>
+
+                    <strong id="passenger-count">
+                        0명
+                    </strong>
+
+                    <p>
+                        현재 예약 기준
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- 프로젝트 소개 -->
+        <section>
+
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">ABOUT PROJECT</p>
+                    <h2>프로젝트 소개</h2>
+                </div>
+            </div>
+
+            <div class="content-card">
+
+                <p id="project-summary">
+                    스마트 통학 관리 시스템은 학교 셔틀버스의 운행 정보를
+                    실시간으로 확인하고 학생들의 효율적인 통학을 지원하기 위한
+                    웹 기반 서비스입니다.
+                    학생은 노선과 운행 시간을 쉽게 확인하고,
+                    관리자는 셔틀버스 운행 및 탑승 현황을 효율적으로 관리할 수 있습니다.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 주요 기능 -->
+        <section>
+
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">CORE FEATURES</p>
+                    <h2>주요 기능</h2>
+                </div>
+            </div>
+
+            <div id="project-features" class="feature-grid">
+
+                <article class="feature-card">
+                    <div class="feature-icon">🚌</div>
+
+                    <h3>셔틀버스 운행 조회</h3>
+
+                    <p>
+                        현재 운행 중인 셔틀버스와
+                        다음 출발 시간을 확인할 수 있습니다.
+                    </p>
+                </article>
+
+
+                <article class="feature-card">
+                    <div class="feature-icon">📍</div>
+
+                    <h3>노선 및 정류장 확인</h3>
+
+                    <p>
+                        셔틀버스 노선과 정류장 정보를
+                        쉽게 확인할 수 있습니다.
+                    </p>
+                </article>
+
+
+                <article class="feature-card">
+                    <div class="feature-icon">🎫</div>
+
+                    <h3>탑승 예약 관리</h3>
+
+                    <p>
+                        원하는 시간대의 셔틀버스를
+                        예약하고 탑승 정보를 관리합니다.
+                    </p>
+                </article>
+
+
+                <article class="feature-card">
+                    <div class="feature-icon">👥</div>
+
+                    <h3>탑승 인원 관리</h3>
+
+                    <p>
+                        노선별 탑승 인원을 확인하여
+                        효율적인 차량 운행을 지원합니다.
+                    </p>
+                </article>
+
+
+                <article class="feature-card">
+                    <div class="feature-icon">🔔</div>
+
+                    <h3>운행 알림</h3>
+
+                    <p>
+                        운행 변경이나 지연 등의 정보를
+                        사용자에게 안내할 수 있습니다.
+                    </p>
+                </article>
+
+
+                <article class="feature-card">
+                    <div class="feature-icon">📊</div>
+
+                    <h3>운행 데이터 관리</h3>
+
+                    <p>
+                        운행 및 탑승 데이터를 수집하여
+                        통학 서비스를 효율적으로 관리합니다.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- 노선 정보 -->
+        <section>
+
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">BUS ROUTES</p>
+                    <h2>셔틀 노선</h2>
+                </div>
+            </div>
+
+            <div class="route-list">
+
+                <article class="route-card">
+
+                    <div class="route-number">
+                        A
+                    </div>
+
+                    <div class="route-info">
+                        <h3>기숙사 → 캠퍼스</h3>
+
+                        <p>
+                            기숙사 → 정문 → 중앙도서관 → 캠퍼스
+                        </p>
+                    </div>
+
+                    <div class="route-time">
+                        <span>출발</span>
+                        <strong>08:00</strong>
+                    </div>
+
+                </article>
+
+
+                <article class="route-card">
+
+                    <div class="route-number">
+                        B
+                    </div>
+
+                    <div class="route-info">
+                        <h3>캠퍼스 → 기숙사</h3>
+
+                        <p>
+                            캠퍼스 → 중앙도서관 → 정문 → 기숙사
+                        </p>
+                    </div>
+
+                    <div class="route-time">
+                        <span>출발</span>
+                        <strong>17:30</strong>
+                    </div>
+
+                </article>
+
+
+                <article class="route-card">
+
+                    <div class="route-number">
+                        C
+                    </div>
+
+                    <div class="route-info">
+                        <h3>외부 정류장 → 캠퍼스</h3>
+
+                        <p>
+                            외부 정류장 → 정문 → 캠퍼스
+                        </p>
+                    </div>
+
+                    <div class="route-time">
+                        <span>출발</span>
+                        <strong>08:20</strong>
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- 사용 기술 -->
+        <section>
+
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">TECH STACK</p>
+                    <h2>사용 기술</h2>
+                </div>
+            </div>
+
+            <div class="content-card">
+
+                <p id="project-technology">
+                    HTML과 CSS를 활용하여 사용자 인터페이스를 구현하고,
+                    JavaScript를 이용해 셔틀버스 운행 정보와 사용자 상호작용을 처리합니다.
+                    백엔드 API와 연동하여 조회수, 운행 상태, 탑승 인원 등의 데이터를
+                    동적으로 표시할 수 있도록 설계했습니다.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- 팀 소개 -->
+        <section>
+
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">TEAM</p>
+                    <h2>팀 소개</h2>
+                </div>
+            </div>
+
+            <div class="team-grid">
+
+                <article class="team-card">
+                    <div class="member-avatar">👨‍💻</div>
+
+                    <div>
+                        <h3>팀원 1</h3>
+                        <p>프론트엔드 · UI/UX</p>
+                    </div>
+                </article>
+
+
+                <article class="team-card">
+                    <div class="member-avatar">👩‍💻</div>
+
+                    <div>
+                        <h3>팀원 2</h3>
+                        <p>백엔드 · API</p>
+                    </div>
+                </article>
+
+
+                <article class="team-card">
+                    <div class="member-avatar">🧑‍💻</div>
+
+                    <div>
+                        <h3>팀원 3</h3>
+                        <p>데이터 · 시스템 관리</p>
+                    </div>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- 버튼 -->
+        <section class="actions">
+
+            <button id="download-button" class="primary-button">
+                소개 내용 다운로드
+                <span>.md</span>
+            </button>
+
+            <button id="refresh-views" class="secondary-button">
+                ↻ 조회수 다시 확인
+            </button>
+
+        </section>
+
+
+        <!-- 메시지 -->
+        <p
+            id="message"
+            class="result"
+            aria-live="polite">
+        </p>
+
+
+        <!-- Footer -->
+        <footer>
+
+            <div class="footer-links">
+                <a href="/api/health">
+                    API 연결 확인
+                </a>
+            </div>
+
+            <p>
+                페이지를 열거나 새로고침하면 조회수가 증가합니다.
+            </p>
+
+            <p class="copyright">
+                © 2026 Smart Shuttle Capstone Project
+            </p>
+
+        </footer>
+
+    </main>
+
+</body>
+
+</html>
